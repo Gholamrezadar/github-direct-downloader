@@ -14,6 +14,7 @@ interface RepoInputProps {
 
 export function RepoInput({ onRepoSubmit, loading }: RepoInputProps) {
   const [url, setUrl] = useState("");
+  const [branch, setBranch] = useState("main")
   const [error, setError] = useState("");
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -25,9 +26,9 @@ export function RepoInput({ onRepoSubmit, loading }: RepoInputProps) {
       return;
     }
     
-    const repoInfo = parseGitHubUrl(url.trim());
+    const repoInfo = parseGitHubUrl(url.trim(), branch.trim());
     if (!repoInfo) {
-      setError("Invalid GitHub repository format. Please enter either 'owner/repo' or 'https://github.com/owner/repo'");
+      setError("Invalid GitHub repository. Please enter either 'owner/repo' or 'https://github.com/owner/repo'");
       return;
     }
     
@@ -41,14 +42,22 @@ export function RepoInput({ onRepoSubmit, loading }: RepoInputProps) {
   return (
     <div className="w-full">
       <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-2 mb-2">
-        <div className="relative flex-1">
-          <Github className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+        <div className="relative flex-1 flex flex-row">
+          <Github className="absolute left-4 top-1/2 transform -translate-y-1/2 w-4 h-4 text-muted-foreground" />
           <Input
             type="text"
-            placeholder="owner/repository or https://github.com/owner/repository"
+            placeholder="owner/repository"
             value={url}
             onChange={(e) => setUrl(e.target.value)}
-            className="pl-10 transition-all"
+            className="mr-2 flex-grow pl-10 transition-all"
+            disabled={loading}
+          />
+          <Input
+            type="text"
+            placeholder="branch"
+            value={branch}
+            onChange={(e) => setBranch(e.target.value)}
+            className="w-28 transition-all"
             disabled={loading}
           />
         </div>

@@ -6,8 +6,8 @@ import { Providers } from '@/components/providers';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'GitHub Repository Downloader',
-  description: 'Browse GitHub repositories and generate curl commands to download files with automatic directory creation',
+  title: 'GitHub Direct Downloader',
+  description: 'Download a specific folder from a GitHub repository using curl',
 };
 
 export default function RootLayout({

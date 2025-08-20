@@ -1,6 +1,6 @@
 import { GitTreeResponse, TreeNode, RepoInfo } from './types';
 
-export function parseGitHubUrl(url: string): RepoInfo | null {
+export function parseGitHubUrl(url: string, branch: string): RepoInfo | null {
   try {
     // Handle shorthand format: owner/repo
     if (!url.includes('://') && url.includes('/')) {
@@ -9,7 +9,7 @@ export function parseGitHubUrl(url: string): RepoInfo | null {
         return {
           owner: parts[0],
           repo: parts[1],
-          branch: 'main'
+          branch: branch
         };
       }
       return null;
@@ -25,7 +25,7 @@ export function parseGitHubUrl(url: string): RepoInfo | null {
     return {
       owner: pathParts[0],
       repo: pathParts[1],
-      branch: 'main'
+      branch: branch
     };
   } catch {
     // If URL parsing fails, try shorthand format as fallback
@@ -36,7 +36,7 @@ export function parseGitHubUrl(url: string): RepoInfo | null {
         return {
           owner: parts[0],
           repo: parts[1],
-          branch: 'main'
+          branch: branch
         };
       }
     }

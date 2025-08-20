@@ -19,7 +19,7 @@ export function CurlPreview({ selectedNode, repoInfo }: CurlPreviewProps) {
 
   if (!selectedNode || !repoInfo) {
     return (
-      <div className="flex-1 flex items-center justify-center text-muted-foreground">
+      <div className="flex-1 flex items-center justify-center text-muted-foreground justify-center items-center">
         <div className="text-center">
           <Download className="w-12 h-12 mx-auto mb-4 opacity-50" />
           <h3 className="text-lg font-semibold mb-2">Select a file or folder</h3>
@@ -75,7 +75,7 @@ export function CurlPreview({ selectedNode, repoInfo }: CurlPreviewProps) {
                 )}
               </Button>
             </div>
-            <div className="bg-muted p-3 rounded-md">
+            <div className="bg-black dark:bg-white dark:bg-opacity-5 bg-opacity-10 p-3 rounded-md">
               <code className="text-xs sm:text-sm break-all font-mono">{command}</code>
             </div>
           </div>
@@ -124,7 +124,7 @@ export function CurlPreview({ selectedNode, repoInfo }: CurlPreviewProps) {
         </CardHeader>
         <CardContent className="flex-1 flex flex-col">
           <div className="text-sm font-medium mb-2">Curl Commands:</div>
-          <ScrollArea className="flex-1 bg-muted rounded-md p-3">
+          <ScrollArea className="flex-1 bg-black dark:bg-white dark:bg-opacity-5 bg-opacity-10 rounded-md p-3">
             <div className="space-y-3">
               {commands.map((command, index) => (
                 <div key={index} className="group">
