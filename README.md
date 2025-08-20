@@ -2,7 +2,7 @@
 
 Want to download a specific folder or a single file from a Github repo without cloning the whole repo?
 
-Visit the website: [github-direct-downloader.vercel.app](github-direct-downloader.vercel.app)
+Visit the website: [github-direct-downloader.vercel.app](https://github-direct-downloader.vercel.app)
 
 ![demo](github-dl-demo.png)
 
